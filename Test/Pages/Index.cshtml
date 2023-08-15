@@ -1,0 +1,44 @@
+﻿@page
+@model Test.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form method="post" asp-page-handler="Sum">
+    <h2>Sum Numbers</h2>
+    <p>Введите числа, для вывода суммы каждого 2 нечетного числа по модулю. Числа нужно разделять запятой.</p>
+    <input type="text" name="Numbers" />
+    <button type="submit">Рассчитать сумму</button>
+    <p>
+        Результат: @if (Model.SumResult.HasValue)
+        {
+            @Model.SumResult.Value
+        }
+    </p>
+</form>
+
+<form method="post" asp-page-handler="Sort">
+    <h2>Сортировка чисел</h2>
+    <p>Введите числа, которые нужно отсортировать. Числа нужно разделять запятой.</p>
+    <input type="text" name="Numbers" />
+    <button type="submit">Сортировать числа</button>
+    <p>
+        Отсортированные числа: @if (Model.SortedNumbers != null)
+        {
+            @string.Join(", ", Model.SortedNumbers)
+        }
+    </p>
+</form>
+
+<form method="post" asp-page-handler="IsPalindrome">
+    <h2>Проверка текста на палиндром</h2>
+    <p>Введите текст:</p>
+    <input type="text" name="Input" />
+    <button type="submit">Проверить палиндром</button>
+    <p>
+        Результат проверки: @if (Model.IsPalindromeResult.HasValue)
+        {
+            @Model.IsPalindromeResult.Value
+        }
+    </p>
+</form>
